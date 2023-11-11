@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<title>Calculo de salario</title>
+
+<head>
+    <h1>Distribuidora Hernandez</h1>
+</head>
+
+<body>
+    <h3>Bienvenido al servicio de cálculo de salario</h3>
+    <h3>Aquí te dejaremos una sencilla serie de pasos para que puedas colocar los datos</h3>
+    <h3>Pero antes de iniciar, te dejaremos la información del salario base de cada cargo</h3>
+
+    <h2>Cargo de SUPERVISOR</h2>
+    <h3>Q 4,500.00</h3>
+
+    <h2>Cargo de SECRETARIA</h2>
+    <h3>Q 3,250.00</h3>
+
+    <h2>Cargo de MENSAJERO</h2>
+    <h3>Q 2,800.00</h3>
+    <br><br>
+    <h3>Cada cargo tiene una bonificación de Q250.00. El valor de la hora extra es de Q15.75</h3>
+    <label for="nombre">Por favor, ingrese el nombre del empleado a tratar</label>
+    <input type="text" id="nombre" placeholder="Escribe el nombre">
+
+    <h3>Inserte 1, si quiere seleccionar el cargo de SUPERVISOR</h3>
+    <h3>Inserte 2, si quiere seleccionar el cargo de SECRETARIA</h3>
+    <h3>Inserte 3, si quiere seleccionar el cargo de MENSAJERO</h3>
+    <label for="cargo">Por favor, escriba su opción a su gusto</label>
+    <input type="number" id="cargo" placeholder="Escribe el nombre" oninput="Opciones()">
+
+    <br><br><br>
+
+    <label for="cargo">Por favor, ingrese la cantidad de horas extras realizadas por el trabajador</label>
+    <input type="number" id="horas" placeholder="Escribe una cantidad" oninput="NoNegativos()">
+
+    <h1 id="nombre_resultado"></h1>
+    <h1 id="resultado"></h1>
+    <script type="text/javascript">
+        function NoNegativos() {
+            var horas = document.getElementById("horas");
+            var horas1 = parseInt(horas.value);
+
+            if (horas1 < 0) {
+                horas.value = 0;
+            }
+        }
+
+        function Opciones() {
+            var cargo = document.getElementById("cargo");
+            var opcion = parseInt(cargo.value);
+
+            if (opcion < 1 || opcion > 3) {
+                cargo.value = 1;
+            }
+
+            var resultado = document.getElementById("resultado");
+            var nombre = document.getElementById("nombre");
+            var horasextra = parseInt(document.getElementById("horas").value) * 15.75;
+
+            if (opcion === 1) {
+                var sueldo = horasextra + 4500 + 250;
+                resultado.innerHTML = "El sueldo líquido es de Q" + sueldo.a(2);
+            } else if (opcion === 2) {
+                var sueldo = horasextra + 3250 + 250;
+                resultado.innerHTML = "El sueldo líquido es de Q" + sueldo.a(2);
+            } else if (opcion === 3) {
+                var sueldo = horasextra + 2800 + 250;
+                resultado.innerHTML = "El sueldo líquido es de Q" + sueldo.a(2);
+            }
+
+            nombre_resultado.innerHTML = "Empleado: " + nombre.value;
+        }
+    </script>
+
+</body>
+
+</html>
